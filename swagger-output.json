@@ -1,0 +1,159 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "API de Ponto de Venda (PDV) - Equipe 20: Erro 404 - Nome Não Encontrado",
+    "description": "A aplicação permite ao usuário se cadastrar, efetuar login, visualizar e editar o seu perfil, além de fazer uma listagem de todas as categorias disponíveis para cadastro de transações.",
+    "version": "1.0.0"
+  },
+  "host": "vast-blue-bream-wig.cyclic.app",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/categoria": {
+      "get": {
+        "description": "Esse endpoint faz a listagem de todas as categorias disponíveis para cadastro de transações.",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/usuario": {
+      "post": {
+        "description": "Esse endpoint permite a realização do cadastro de um novo usuário no sistema.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nome": {
+                  "example": "John Doe"
+                },
+                "email": {
+                  "example": "johndoe@email.com"
+                },
+                "senha": {
+                  "example": "johndoe"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "get": {
+        "description": "Esse endpoint lista os dados do usuário logado no sistema.",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string",
+            "description": "Insira a palavra 'bearer' seguida do token gerado pela API. Exemplo: bearer eyJhbGciOiJ"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      },
+      "put": {
+        "description": "Esse endpoint faz a atualização dos dados do usuário logado no sistema.",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string",
+            "description": "Insira a palavra 'bearer' seguida do token gerado pela API. Exemplo: bearer eyJhbGciOiJ"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nome": {
+                  "example": "John Doe"
+                },
+                "email": {
+                  "example": "johndoe@email.com"
+                },
+                "senha": {
+                  "example": "johndoe"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "description": "Esse endpoint efetua o login do usuário no sistema.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "example": "johndoe@email.com"
+                },
+                "senha": {
+                  "example": "johndoe"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  }
+}
